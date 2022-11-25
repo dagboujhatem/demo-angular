@@ -12,6 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { Page400Component } from './pages/page400/page400.component';
+import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { Page400Component } from './pages/page400/page400.component';
     LoginComponent,
     RegisterComponent,
     Page500Component,
-    Page400Component
+    Page400Component,
+    TermsConditionsComponent
   ],
   imports: [
     BrowserModule,
