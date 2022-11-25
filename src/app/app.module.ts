@@ -13,6 +13,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { Page500Component } from './pages/page500/page500.component';
 import { Page400Component } from './pages/page400/page400.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditi
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, // Template driving forms
+    ReactiveFormsModule, // Reactive forms
   ],
   providers: [],
   bootstrap: [AppComponent]

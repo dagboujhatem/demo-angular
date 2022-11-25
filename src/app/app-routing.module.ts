@@ -19,6 +19,9 @@ const routes: Routes = [
   { path: 'term-and-condition', component: TermsConditionsComponent },
   { path: 'page-400', component: Page400Component },
   { path: 'page-500', component: Page500Component },
+  { path: 'users', loadChildren: () => import('./domains/users/users.module').then(m => m.UsersModule) },
+  { path: 'products', loadChildren: () => import('./domains/products/products.module').then(m => m.ProductsModule) },
+  { path: 'commandes', loadChildren: () => import('./domains/commandes/commandes.module').then(m => m.CommandesModule) },
   { path: '**', redirectTo: 'page-400', pathMatch: 'full' }
 ];
 
