@@ -1,1 +1,52 @@
-<p>create-product works!</p>
+<div class="row my-5">
+  <div class="offset-md-3 col-md-6 my-5">
+    <form class="my-0" *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="createProduct()">
+      <h1 class="text-primary text-center my-3">Create product</h1>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Type the product name here" formControlName="name">
+        <div class="d-block invalid-feedback" *ngIf="submitted && productForm.get('name')?.hasError('required')">Name is required.</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Type the product description here" formControlName="description"></textarea>
+        <div class="d-block invalid-feedback" *ngIf="submitted && productForm.get('description')?.hasError('required')">Description is required.</div>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="Type the product price here" formControlName="price">
+        <div class="d-block invalid-feedback" *ngIf="submitted && productForm.get('price')?.hasError('required')">Price is required.</div>
+      </div>
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity:</label>
+        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type the product quantity here" formControlName="quantity">
+        <div class="d-block invalid-feedback" *ngIf="submitted && productForm.get('quantity')?.hasError('required')">Quantity is required.</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6 text-center">
+          <button class="btn btn-primary" type="button" (click)="addNew()"> + Add new </button>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-danger" type="button" (click)="clearAll()"> - Clear All</button>
+        </div>
+      </div>
+      <div class="row" *ngFor="let control of stock.controls; let i=index">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Pointure {{i}}:</label>
+              <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type the product quantity here" formControlName="quantity">
+              <!-- <div class="d-block invalid-feedback" *ngIf="submitted && productForm.get('quantity')?.hasError('required')">Quantity is required.</div> -->
+            </div>
+          </div>
+          <div class="col-md-6 mt-4">
+            <button class="btn btn-danger" type="button" (click)="deleteControl(i)"> - Delete</button>
+          </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Create new product</button>
+        <button type="submit" class="btn btn-link" routerLink="/products">Back</button>
+      </div>
+    </form>
+  </div>
+</div>
+

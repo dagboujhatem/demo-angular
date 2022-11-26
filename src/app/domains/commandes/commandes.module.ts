@@ -5,6 +5,7 @@ import { CommandesRoutingModule } from './commandes-routing.module';
 import { CommandesComponent } from './commandes.component';
 import { CreateCommandeComponent } from './components/create-commande/create-commande.component';
 import { UpdateCommandeComponent } from './components/update-commande/update-commande.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { UpdateCommandeComponent } from './components/update-commande/update-com
   ],
   imports: [
     CommonModule,
-    CommandesRoutingModule
+    CommandesRoutingModule,
+    SharedModule
   ]
 })
 export class CommandesModule { }
