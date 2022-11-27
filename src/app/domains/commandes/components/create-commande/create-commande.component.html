@@ -1,1 +1,23 @@
-<p>create-commande works!</p>
+<div class="row my-5">
+  <div class="offset-md-3 col-md-6 my-5">
+    <form class="my-0" *ngIf="commandeForm" [formGroup]="commandeForm" (ngSubmit)="createCommande()">
+      <h1 class="text-primary text-center my-3">Create new commande</h1>
+      <div class="mb-3">
+        <label for="name" class="form-label">Tatal:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Type the total TTC here" formControlName="total">
+        <div class="d-block invalid-feedback" *ngIf="submitted && commandeForm.get('total')?.hasError('required')">Total is required.</div>
+        <div class="d-block invalid-feedback" *ngIf="submitted && commandeForm.get('total')?.hasError('max')">Total must be less than or equal to 1000.</div>
+      </div>
+      <div class="mb-3" *ngIf="commandeForm.get('card')">
+        <label for="card" class="form-label">Credit card:</label>
+        <input type="text" class="form-control" id="card" name="card" placeholder="Type the credit card here" formControlName="card">
+        <div class="d-block invalid-feedback" *ngIf="submitted && commandeForm.get('card')?.hasError('required')">Credit card is required.</div>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Create new commande</button>
+        <button type="submit" class="btn btn-link" routerLink="/commandes">Back</button>
+      </div>
+    </form>
+  </div>
+</div>
+
