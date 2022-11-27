@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'users', loadChildren: () => import('./domains/users/users.module').then(m => m.UsersModule) },
   { path: 'products', loadChildren: () => import('./domains/products/products.module').then(m => m.ProductsModule) },
   { path: 'commandes', loadChildren: () => import('./domains/commandes/commandes.module').then(m => m.CommandesModule) },
+  { path: 'posts', loadChildren: () => import('./domains/posts/posts.module').then(m => m.PostsModule) },
   { path: '**', redirectTo: 'page-400', pathMatch: 'full' }
 ];
 

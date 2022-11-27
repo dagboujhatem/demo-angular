@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="offset-md-1 col-md-10">
+    <h1 class="text-center text-primary my-5">List of posts</h1>
+    <app-posts-details [postsData]="posts" (deleteEvent)="deletePostById($event)"></app-posts-details>
+  </div>
+</div>

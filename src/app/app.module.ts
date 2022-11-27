@@ -14,6 +14,7 @@ import { Page500Component } from './pages/page500/page500.component';
 import { Page400Component } from './pages/page400/page400.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
