@@ -20,9 +20,8 @@ export class UpdateProductComponent implements OnInit {
       price: new FormControl('', [Validators.required]),
       stock: new FormArray([
         new FormGroup({
-          quantity: new FormControl('', [Validators.required]),
           size: new FormControl('', [Validators.required]),
-          
+          quantity: new FormControl('', [Validators.required]),
         })
       ]),
     });

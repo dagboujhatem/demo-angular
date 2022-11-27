@@ -30,17 +30,21 @@
           <button class="btn btn-danger" type="button" (click)="clearAll()"> - Clear All</button>
         </div>
       </div>
-      <div class="row" *ngFor="let control of stock.controls; let i=index">
+      <div formArrayName="stock">
+        <div class="row" *ngFor="let control of stock.controls; let i=index">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="quantity" class="form-label">Pointure {{i}}:</label>
-              <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type the product quantity here" formControlName="quantity">
-              <!-- <div class="d-block invalid-feedback" *ngIf="submitted && productForm.get('quantity')?.hasError('required')">Quantity is required.</div> -->
+              <label for="size" class="form-label">Size {{i}}:</label>
+              <input type="text" class="form-control" id="size" name="size" placeholder="Type the size here" formControlName="{{i}}">
+              <div class="d-block invalid-feedback" *ngIf="submitted && control?.hasError('required')">Size is required.</div>
+              {{ control.errors |json }}
+
             </div>
           </div>
           <div class="col-md-6 mt-4">
             <button class="btn btn-danger" type="button" (click)="deleteControl(i)"> - Delete</button>
           </div>
+      </div>
       </div>
       <div class="d-grid gap-2">
         <button type="submit" class="btn btn-primary">Create new product</button>
