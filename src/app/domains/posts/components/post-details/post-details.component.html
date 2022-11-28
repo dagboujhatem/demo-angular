@@ -1,3 +1,5 @@
+<input type="search" class="fom-control" placeholder="Search here ..." [(ngModel)]="querySearch">
+
 <table class="table table-striped table-hover table-responsive">
   <thead>
     <tr>
@@ -8,9 +10,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let post of postsData">
-      <td>{{post.id}}</td>
-      <td>{{post.title}}</td>
+    <tr *ngFor="let post of postsData | search : querySearch">
+      <td>{{post.id | number: '3.0'}}</td>
+      <td>{{post.title | uppercase }}</td>
       <td>{{post.body}}</td>
       <td>
         <button class="btn btn-primary mb-3" type="submit">Update</button>
@@ -19,3 +21,71 @@
     <tr>
   </tbody>
 </table>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>Currency</h4>
+    {{ 1234.56 | currency:"CAD" }} <br>
+    {{ 1234.56 | currency:"CAD":"code" }} <br>
+    {{ 1234.56 | currency:"CAD":"symbol" }} <br>
+    {{ 1234.56 | currency:"CAD":"symbol-narrow" }} <br>
+  </div>
+  <div class="col-md-6">
+    <h4 class="card-title">Date</h4>
+    <div class="card-text">
+      <p ngNonBindable>{{ dateVal | date: 'shortTime' }}</p> (1)
+      <p>{{ dateVal | date: 'shortTime' }}</p>
+
+      <p ngNonBindable>{{ dateVal | date:'fullDate' }}</p>
+      <p>{{ dateVal | date: 'fullDate' }}</p>
+
+      <p ngNonBindable>{{ dateVal | date: 'd/M/y' }}</p>
+      <p>{{ dateVal | date: 'd/M/y hh:mm:ss a' }}</p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4 class="card-title">Percent Pipe</h4>
+    <div class="card-text">
+      <p ngNonBindable>{{ 0.123456 | percent }}</p>
+      <p>{{ 0.123456 | percent }}</p>
+
+      <p ngNonBindable>{{ 0.123456 | percent: '2.1-2' }}</p> (1)
+      <p>{{ 0.123456 | percent: '2.1-2' }}</p>
+
+      <p ngNonBindable>{{ 42 | percent: '10.4-4' }}</p>
+      <p>{{ 0.123456 | percent : "10.4-4" }}</p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4 class="card-title">Slice Pipe</h4>
+    <div class="card-text">
+      <p ngNonBindable>{{ [1,2,3,4,5,6] | slice:1:3 }}</p> (1)
+      <p>{{ [1,2,3,4,5,6] | slice:1:3 }}</p>
+
+      <p ngNonBindable>{{ [1,2,3,4,5,6] | slice:2 }}</p> (2)
+      <p>{{ [1,2,3,4,5,6] | slice:2 }}</p>
+
+      <p ngNonBindable>{{ [1,2,3,4,5,6] | slice:2:-1 }}</p> (3)
+      <p>{{ [1,2,3,4,5,6] | slice:2:-1 }}</p>
+
+      <pre ngNonBindable>
+&lt;ul&gt;
+  &lt;li *ngFor=&quot;let v of [1,2,3,4,5,6] | slice:2:-1&quot;&gt;
+    {{v}}
+  &lt;/li&gt;
+&lt;/ul&gt;
+    </pre>
+
+      <ul>
+        <li *ngFor="let v of [1,2,3,4,5,6] | slice:2:-1"> (4)
+          {{v}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Async pipe</h4>
+    <p>{{ observble | async }}</p>
+  </div>
+  <div class="col-md-6"></div>
+</div>

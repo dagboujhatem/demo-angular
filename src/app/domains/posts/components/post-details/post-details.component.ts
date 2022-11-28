@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-posts-details',
@@ -9,6 +10,9 @@ export class PostDetailsComponent implements OnInit {
 
   @Input() postsData: Array<any> = [];
   @Output() deleteEvent: EventEmitter<number> = new EventEmitter();
+  dateVal = new Date();
+  observble = interval(1000);
+  querySearch?: string;
 
   constructor() { }
 

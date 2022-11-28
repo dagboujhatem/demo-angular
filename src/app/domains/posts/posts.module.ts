@@ -6,6 +6,8 @@ import { PostsComponent } from './posts.component';
 import { UpdatePostComponent } from './components/update-post/update-post.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
     UpdatePostComponent,
     CreatePostComponent,
     PostDetailsComponent,
+    SearchPipe,
   ],
   imports: [
     CommonModule,
-    PostsRoutingModule
+    PostsRoutingModule,
+    SharedModule
   ]
 })
 export class PostsModule { }
