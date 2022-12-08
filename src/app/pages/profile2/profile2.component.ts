@@ -38,6 +38,6 @@ export class Profile2Component implements OnInit {
   addSkill() {
 // //  this.Skill : this.fb.array([])
 //     .push(this.fb.control(''));
-//   }
+  }
   
 }

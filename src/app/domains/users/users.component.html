@@ -1,1 +1,92 @@
-<p>users works!</p>
+<div class="row my-5">
+    <form class="my-0" *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="createUser()">
+        <h1 class="text-primary text-center my-3">Create user</h1>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Type the name here"
+                formControlName="name">
+            <div class="d-block invalid-feedback" *ngIf="submitted && userForm.get('name')?.hasError('required')">Name
+                is required.</div>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input class="form-control" id="username" name="username" placeholder="Type the  username here"
+                formControlName="username">
+            <div class="d-block invalid-feedback" *ngIf="submitted && userForm.get('username')?.hasError('required')">
+                Username is required.</div>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Email:</label>
+            <input type="text" class="form-control" id="price" name="email" placeholder="Type the email here"
+                formControlName="email">
+            <div class="d-block invalid-feedback" *ngIf="submitted && userForm.get('email')?.hasError('required')">Email
+                is required.</div>
+        </div>
+        <section formGroupName="address">
+            <div class="form-row d-flex justify-content-between gap-2 ">
+                <div class="form-group col-md-5">
+                    <label for="inputsuite">Street:</label>
+                    <input type="text" class="form-control" id="inputstreet" placeholder="Type the street here"
+                        formControlName="street">
+                    <div class="d-block invalid-feedback"
+                        *ngIf="submitted && address?.get ('street')?.hasError('required')">Street
+                        is required.</div>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputState">Suite:</label>
+                    <input type="text" class="form-control" id="inputsuite" placeholder="Type the suite  here"
+                        formControlName="suite">
+                    <div class="d-block invalid-feedback"
+                        *ngIf="submitted && userForm.get('address')?.get('suite')?.hasError('required')">Suite
+                        is required.</div>
+                </div>
+            </div>
+            <div class="form-row d-flex gap-2 justify-content-between">
+                <div class="form-group col-md-5">
+                    <label for="inputcity">City:</label>
+                    <input type="text" class="form-control" id="inputcity" placeholder="Type the city here"
+                        formControlName="city">
+                    <div class="d-block invalid-feedback"
+                        *ngIf="submitted && userForm.get('address')?.get('city')?.hasError('required')">City
+                        is required.</div>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputzipcode">Zip code:</label>
+                    <input type="text" class="form-control" id="inputzipcode" placeholder="Type the zip code here"
+                        formControlName="zipcode">
+                    <div class="d-block invalid-feedback"
+                        *ngIf="submitted && userForm.get('address')?.get ('zipcode')?.hasError('required')">Zip code
+                        is required.</div>
+                </div>
+            </div>
+            <section formGroupName="geo">
+                <div class="d-flex justify-content-between">
+                    <div class="form-group col-md-6">
+                        <label for="inputgeo">Lat:</label>
+                        <input type="text" class="form-control" id="inputlat" placeholder="Type the lat here"
+                            formControlName="lat">
+                        <div class="d-block invalid-feedback"
+                            *ngIf="submitted && geo?.get ('lat')?.hasError('required')">
+                            Lat
+                            is required.</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputgeo">Lng:</label>
+                        <input type="text" class="form-control" id="inputlng" placeholder="Type the lng here"
+                            formControlName="lng">
+                        <div class="d-block invalid-feedback"
+                            *ngIf="submitted && userForm.get('address')?.get('geo')?.get ('lng')?.hasError('required')">
+                            Lng
+                            is required.</div>
+                    </div>
+                </div>
+
+            </section>
+
+        </section>
+        <div class="  d-flex flex-column align-items-center">
+            <button type="submit" class="btn btn-primary">Create new user</button>
+            <button type="submit" class="btn btn-link" routerLink="/home">Back</button>
+        </div>
+    </form>
+</div>
