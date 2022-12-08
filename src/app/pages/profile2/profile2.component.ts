@@ -23,7 +23,7 @@ export class Profile2Component implements OnInit {
         state: [''],
         postalCode: [''],
       }),
-      skill: this.fb.array([]),
+      skills: this.fb.array([]),
     });
   }
 
@@ -33,11 +33,19 @@ export class Profile2Component implements OnInit {
   get email() {
     return this.registrationForm?.get('email');
   }
-  get skill() : FormArray {
-    return this.registrationForm?.get('skill') as FormArray;
+  get skills() : FormArray {
+    return this.registrationForm?.get('skills') as FormArray;
   }
   addSkill() {
-    this.skill.push(this.fb.control(''));
+    this.skills.push(this.fb.control('', [Validators.required]));
+  }
+
+  deletAllSkills(){
+    this.skills.clear();
+  }
+
+  deleteSkill(i: number){
+    this.skills.removeAt(i);
   }
 
 }
