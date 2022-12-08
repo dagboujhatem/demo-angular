@@ -23,4 +23,12 @@ export class PostDetailsComponent implements OnInit {
     this.deleteEvent.emit(id);
   }
 
+  // take100Char(body: string): string{
+  //   if(body.length > 100){
+  //     return body.substring(0,100) + " ...";
+  //   }else{
+  //     return body;
+  //   }
+  // }
+
 }

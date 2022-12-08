@@ -1,5 +1,4 @@
 <input type="search" class="fom-control" placeholder="Search here ..." [(ngModel)]="querySearch">
-
 <table class="table table-striped table-hover table-responsive">
   <thead>
     <tr>
@@ -10,10 +9,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let post of postsData | search : querySearch">
+    <tr *ngFor="let post of postsData | postSearch : querySearch">
       <td>{{post.id | number: '3.0'}}</td>
       <td>{{post.title | uppercase }}</td>
-      <td>{{post.body}}</td>
+      <td>{{post.body | show100char }}</td>
+      <!-- <td>{{take100Char(post.body) }}</td> -->
       <td>
         <button class="btn btn-primary mb-3" type="submit">Update</button>
         <button class="btn btn-danger" type="button" (click)="deleteChild(post.id)">Delete</button>
@@ -23,6 +23,7 @@
 </table>
 
 <div class="row">
+  <div class="text-center my-5 h2 text-primary">Les pipes proposées par Angular</div>
   <div class="col-md-6">
     <h4>Currency</h4>
     {{ 1234.56 | currency:"CAD" }} <br>

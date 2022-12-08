@@ -8,6 +8,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SearchPipe } from './pipes/search.pipe';
+import { Search2Pipe } from './pipes/search2.pipe';
+import { Show100charPipe } from './pipes/show100char.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { SearchPipe } from './pipes/search.pipe';
     CreatePostComponent,
     PostDetailsComponent,
     SearchPipe,
+    Search2Pipe,
+    Show100charPipe,
   ],
   imports: [
     CommonModule,
