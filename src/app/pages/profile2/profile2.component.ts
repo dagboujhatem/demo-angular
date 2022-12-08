@@ -8,8 +8,9 @@ import { FormBuilder, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./profile2.component.scss'],
 })
 export class Profile2Component implements OnInit {
-  registrationForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  registrationForm?: FormGroup ;
+
+  constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -22,7 +23,7 @@ export class Profile2Component implements OnInit {
         state: [''],
         postalCode: [''],
       }),
-     Skill: this.fb.array([]),
+      skill: this.fb.array([]),
     });
   }
 
@@ -32,12 +33,11 @@ export class Profile2Component implements OnInit {
   get email() {
     return this.registrationForm?.get('email');
   }
-  get Skill() {
-    return this.registrationForm?.get('alternateSkill') as FormArray;
+  get skill() : FormArray {
+    return this.registrationForm?.get('skill') as FormArray;
   }
   addSkill() {
-// //  this.Skill : this.fb.array([])
-//     .push(this.fb.control(''));
-//   }
-  
+    this.skill.push(this.fb.control(''));
+  }
+
 }

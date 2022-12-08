@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <form [formGroup]="registrationForm">
+    <form *ngIf="registrationForm" [formGroup]="registrationForm">
         <div class="form-group">
             <label for="">Username</label>
             <input [class.is-invalid]="userName?.invalid &&
