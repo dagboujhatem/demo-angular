@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <form [formGroup]="registrationForm">
+        <div class="form-group">
+            <label for="">Username</label>
+            <input [class.is-invalid]="userName?.invalid &&
+        userName?.touched " type="text" formControlName="userName" class="form-control">
+
+            <div *ngIf="userName?.invalid &&
+         userName?.touched">
+                <small *ngIf="userName?.errors?.['required']" class="text-danger">Username is required</small>
+                <small *ngIf="userName?.errors?.['minlength']" class="text-danger">Username must be at least 3
+                    characters</small>
+                <small *ngIf="userName?.errors?.['forbiddenName']"
+                    class="text-danger">{{userName?.errors?.['forbiddenName'].value}} Username not allowed</small>
+            </div>
+        </div>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" formControlName="subscribe">
+            <label class="form-check-label">
+                Send me promotional offers
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" formControlName="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Confirm Password</label>
+            <input [class.is-invalid]="registrationForm?.errors?.['mismatch']" type="password"
+                formControlName="confirmPassword" class="form-control">
+            <small *ngIf="registrationForm?.errors?.['mismatch']" class="text-danger">Password does not match</small>
+        </div>
+        <div formGroupName="address">
+            <div class="form-group">
+                <label for="">City</label>
+                <input type="text" formControlName="city" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">State</label>
+                <input type="text" formControlName="state" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Postal Code</label>
+                <input type="text" formControlName="postalCode" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Skill</label>
+            <button type="button" class="btn btn-secondary btn-sm m-2" (click)="addSkill()">add skill</button>
+            <input [class.is-invalid]="Skill?.invalid &&
+            Skill?.touched " type="email" class="form-control" formControlName="Skill">
+            <small [class.d-none]="Skill?.valid ||
+         email?.untouched " class="text-danger">skill is required</small>
+            <div formArrayName="alternateSkill" *ngFor="let skill of Skill.controls; let i=index">
+                <input type="text" class="form-control my-1" [formControlName]="i">
+            </div>
+        </div>
+
+        <button [disabled]="!registrationForm?.valid" class="btn btn-primary" type="submit">Register</button>
+    </form>
+</div>
