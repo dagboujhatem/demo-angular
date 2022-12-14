@@ -1,18 +1,19 @@
 <div class="d-flex justify-content-between ">
+   
     <div class="form-check  ">
-        <input   [(ngModel)]="proisChecked" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault1" 
+        <input   [(ngModel)]="proisChecked"   [value] = "true" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault1" 
         (change)="onChange($event)">
         <label class="form-check-label"  for="flexRadioDefault1">
             Je suis un particulier
         </label>
     </div>
     <div class="form-check d-flex">
-        <input  [(ngModel)]="proisChecked" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault2" 
+        <input  [(ngModel)]="proisChecked" [value] = "false" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault2" 
         (change)="onChange($event)">
         <label class="form-check-label" for="flexRadioDefault2">
             Je suis un professionnel
         </label>
     </div>
 </div>
-<app-part-register *ngIf="proisChecked"></app-part-register>
-<app-pro-register *ngIf="proisChecked"></app-pro-register>
+<app-part-register *ngIf="proisChecked" (onRegister)="register($event)"></app-part-register>
+<app-pro-register *ngIf="!proisChecked" (onRegister)="register($event)"></app-pro-register>

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Register3Component implements OnInit {
   
-  proisChecked!: boolean;
+  proisChecked: boolean = true;
   partisChecked!: boolean;
 
   constructor() { }
@@ -18,6 +18,9 @@ export class Register3Component implements OnInit {
   }
   onChange(e: any) {
     console.log(" Value is : ", e.target.value);
+ }
+ register (data : any){
+  console.log(data);
  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./pro-register.component.scss']
 })
 export class ProRegisterComponent implements OnInit {
+
+  @Output() onRegister = new EventEmitter <Event> ();
+  
   public proregisterForm!: FormGroup;
 
   submitted = false;
@@ -32,7 +35,7 @@ export class ProRegisterComponent implements OnInit {
   }
 
   onRegister2(): void {
-    // this.submitted = true;
+     this.onRegister.emit(this.proregisterForm.value) ;
     // if (this.partregisterForm?.invalid) {
     //   return;
     // }

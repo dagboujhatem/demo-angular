@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./part-register.component.scss']
 })
 export class PartRegisterComponent implements OnInit {
+
+  @Output() onRegister = new EventEmitter <Event> ();
 
   public partregisterForm!: FormGroup;
 
@@ -30,12 +32,13 @@ export class PartRegisterComponent implements OnInit {
     
   }
 
+ 
   onRegister2(): void {
-    // this.submitted = true;
-    // if (this.partregisterForm?.invalid) {
-    //   return;
-    // }
-    // console.log(this.partregisterForm?.value);
-  }
+    this.onRegister.emit(this.partregisterForm.value) ;
+   // if (this.partregisterForm?.invalid) {
+   //   return;
+   // }
+   // console.log(this.partregisterForm?.value);
+ }
 
 }
