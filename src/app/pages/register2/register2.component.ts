@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register2.component.scss'],
 })
 export class Register2Component implements OnInit {
-  register2Form?: FormGroup;
+  public register2Form!: FormGroup;
 
   submitted = false;
 
@@ -26,10 +26,10 @@ export class Register2Component implements OnInit {
       commentaire: new FormControl('', [Validators.required]),
     });
 
-    //listen on valueChange of account type
+    // listen on valueChange of account type
     this.register2Form?.get('accountType')?.valueChanges.subscribe((value) => {
       if (value === true) {
-        this.register2Form?.removeControl('raison');
+        this.register2Form?.removeControl('raison social');
         this.register2Form?.removeControl('siret');
         this.register2Form?.removeControl('statut');
         this.register2Form?.removeControl('Gerant');
@@ -43,7 +43,7 @@ export class Register2Component implements OnInit {
         );
       } else {
         this.register2Form?.addControl(
-          'raison',
+          'raison social',
           new FormControl('', [Validators.required])
         );
         this.register2Form?.addControl(

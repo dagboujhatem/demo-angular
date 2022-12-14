@@ -1,7 +1,7 @@
 <div class="row my-5">
   <div class="offset-md-3 col-md-6 my-5">
     <form class="my-0" (ngSubmit)="onRegister()">
-      <h1 class="text-primary text-center my-3">Sign up</h1>
+     <app-titre [titre]="'register'"></app-titre>
       <div class="mb-3">
         <label for="fullname" class="form-label">Full name:</label>
         <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Type your full name here" [(ngModel)]="fullName">

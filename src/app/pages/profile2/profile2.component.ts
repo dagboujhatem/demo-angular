@@ -28,6 +28,8 @@ export class Profile2Component implements OnInit {
   }
 
   get userName() {
+    console.log();
+    
     return this.registrationForm?.get('userName');
   }
   get email() {

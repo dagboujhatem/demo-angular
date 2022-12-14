@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { Profile2Component } from './pages/profile2/profile2.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { Register2Component } from './pages/register2/register2.component';
+import { Register3Component } from './pages/register3/register3.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'register2', component: Register2Component },
+  { path: 'register3', component: Register3Component },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile2', component: Profile2Component },
   { path: 'term-and-condition', component: TermsConditionsComponent },

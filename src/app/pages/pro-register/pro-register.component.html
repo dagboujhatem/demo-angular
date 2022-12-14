@@ -1,43 +1,46 @@
-{{register2Form.value | json}}
-<div form name="register2Form" [formGroup]="register2Form" class="row my-5">
+{{proregisterForm.value | json}}
+<div form name="proregisterForm" [formGroup]="proregisterForm" class="row my-5">
     <div class="d-flex justify-content-between ">
-        <div class="form-check  ">
-            <input  formControlName ="accountType" [value]="true" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault1" >
-            <label class="form-check-label"  for="flexRadioDefault1">
-                Je suis un particulier
-            </label>
-        </div>
-        <div class="form-check d-flex">
-            <input  [value]="false" formControlName ="accountType" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault2">
-                Je suis un professionnel
-            </label>
-        </div>
+        
     </div>
     <div class="offset-md-3 col-md-6 my-5">
-        <form class="my-0" *ngIf="register2Form" [formGroup]="register2Form" (ngSubmit)="onRegister2()">
+        <form class="my-0" *ngIf="proregisterForm" [formGroup]="proregisterForm" (ngSubmit)="onRegister2()">
             <!-- <h1 class="text-primary text-center my-3">Sign up</h1> -->
                         <app-titre [titre]="'sign up'"></app-titre>
             <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Type the product name here"
-                    formControlName="name">
+                <label for="name" class="form-label">raison_social:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Type the raison_social here"
+                    formControlName="raison_social">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('name')?.hasError('required')">Name is required.</div>
+                    *ngIf="submitted && proregisterForm.get('raison_social')?.hasError('required')">raison_social is required.</div>
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label">prenom:</label>
-                <input type="text" class="form-control" id="name" name="prenom"
-                    placeholder="Type the product prenom here" formControlName="prenom">
+                <label for="name" class="form-label">siret:</label>
+                <input type="text" class="form-control" id="name" name="siret"
+                    placeholder="Type the siret here" formControlName="siret">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('prenom')?.hasError('required')">prenom is required.</div>
+                    *ngIf="submitted && proregisterForm.get('siret')?.hasError('required')">siret is required.</div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">statut:</label>
+                <input type="text" class="form-control" id="name" name="statut"
+                    placeholder="Type the statut here" formControlName="statut">
+                <div class="d-block invalid-feedback"
+                    *ngIf="submitted && proregisterForm.get('statut')?.hasError('required')">statut is required.</div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">gerant:</label>
+                <input type="text" class="form-control" id="name" name="gerant"
+                    placeholder="Type the gerant here" formControlName="gerant">
+                <div class="d-block invalid-feedback"
+                    *ngIf="submitted && proregisterForm.get('gerant')?.hasError('required')">gerant is required.</div>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">telephone:</label>
                 <input type="text" class="form-control" id="name" name="telephone"
                     placeholder="Type the telephone  here" formControlName="telephone">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('telephone')?.hasError('required')">telephone is required.
+                    *ngIf="submitted && proregisterForm.get('telephone')?.hasError('required')">telephone is required.
                 </div>
             </div>
             <div class="mb-3">
@@ -45,7 +48,7 @@
                 <input type="text" class="form-control" id="name" name="adresse" placeholder="Type the adresse  here"
                     formControlName="adresse">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('adresse')?.hasError('required')">adresse is required.</div>
+                    *ngIf="submitted && proregisterForm.get('adresse')?.hasError('required')">adresse is required.</div>
             </div>
             
             <div class="mb-3">
@@ -53,14 +56,14 @@
                 <input type="email" class="form-control" id="name" name="email" placeholder="Type the email  here"
                     formControlName="email">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('email')?.hasError('required')">email is required.</div>
+                    *ngIf="submitted && proregisterForm.get('email')?.hasError('required')">email is required.</div>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">password:</label>
                 <input type="password" class="form-control" id="name" name="password"
                     placeholder="Type the password  here" formControlName="password">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('password')?.hasError('required')">password is required.</div>
+                    *ngIf="submitted && proregisterForm.get('password')?.hasError('required')">password is required.</div>
             </div>
 
             <div class="mb-3">
@@ -68,7 +71,7 @@
                 <input type="password" class="form-control" id="name" name="confirmationpassword"
                     placeholder="Type the password  here" formControlName="confirmationpassword">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('confirmationpassword')?.hasError('required')">
+                    *ngIf="submitted && proregisterForm.get('confirmationpassword')?.hasError('required')">
                     confirmationpassword is required.</div>
             </div>
             <div class="mb-3">
@@ -76,26 +79,17 @@
                 <input type="text" class="form-control" id="name" name="adresse" placeholder="Type the adresse  here"
                     formControlName="adresse">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('adresse')?.hasError('required')">adresse is required.</div>
+                    *ngIf="submitted && proregisterForm.get('adresse')?.hasError('required')">adresse is required.</div>
             </div>
 
-            <div class="mb-3" *ngIf="register2Form.get('commentaire')">
+            <div class="mb-3" *ngIf="proregisterForm.get('commentaire')">
                 <label for="name" class="form-label"> commentaire:</label>
                 <input type="text" class="form-control" id="name" name="commentaire"
                     placeholder="Type the   commentaire  here" formControlName="commentaire">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('commentaire')?.hasError('required')"> commentaire is
+                    *ngIf="submitted && proregisterForm.get('commentaire')?.hasError('required')"> commentaire is
                     required.</div>
             </div>
-            <div class="mb-3" *ngIf="register2Form.get('raison social')">
-                <label for="name" class="form-label"> raison social:</label>
-                <input type="text" class="form-control" id="name" name="raison sociale"
-                    placeholder="Type the   raison sociale  here" formControlName="raison social">
-                <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('raison social')?.hasError('required')"> raison social is
-                    required.</div>
-            </div>
-
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary">Register2</button>
             </div>

@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { Register2Component } from './pages/register2/register2.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { Profile2Component } from './pages/profile2/profile2.component';
+import { TITREComponent } from './pages/shared/titre/titre.component';
+import { ProRegisterComponent } from './pages/pro-register/pro-register.component';
+import { PartRegisterComponent } from './pages/part-register/part-register.component';
+import { Register3Component } from './pages/register3/register3.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +37,19 @@ import { Profile2Component } from './pages/profile2/profile2.component';
     TermsConditionsComponent,
     Register2Component,
     ProfileComponent,
-    Profile2Component
+    Profile2Component,
+    TITREComponent,
+    ProRegisterComponent,
+    PartRegisterComponent,
+    Register3Component,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
