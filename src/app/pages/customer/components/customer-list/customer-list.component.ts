@@ -9,6 +9,7 @@ import { Customer } from '../../models/customer';
 export class CustomerListComponent implements OnInit {
   selectedCustomer?: Customer = new Customer();
   showDetail = false;
+  message = 'Customer Details';
 
   customers: Customer[] = [
     {
@@ -59,7 +60,7 @@ export class CustomerListComponent implements OnInit {
   showDetails(customer: Customer) {
     this.selectedCustomer = Object.assign({}, customer);
     this.showDetail = true;
-
+    this.message = 'Customer Details';
   }
 
   update(customer: Customer) {
@@ -69,14 +70,27 @@ export class CustomerListComponent implements OnInit {
       (e) => e.customerNo == customer.customerNo
     );
     // Object.assign(cust, customer);
-    this.customers[custIndex] = customer;
+    // this.customers[custIndex] = customer;
+    this.customers.splice(custIndex, 1, customer);
 
     alert('Customer Saved');
     this.showDetail = false;
-
   }
-  cancel(){
+  cancel() {
     this.showDetail = false;
-
+  }
+  ajouter() {
+    this.showDetail = true;
+    this.message = 'Add Customer';
+    this.selectedCustomer = new Customer();
+  }
+  deleteCustomer(i: number) {
+    this.customers.splice(i, 1);
+  }
+  add(customer: Customer) {
+    customer.customerNo = this.customers.length + 1;
+    this.customers.push(customer);
+    alert('Customer added');
+    this.showDetail = false;
   }
 }

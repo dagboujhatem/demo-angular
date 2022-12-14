@@ -11,9 +11,8 @@ export class CustomerDetailComponent implements OnInit {
   @Input() customer:Customer = new Customer();
   @Output() customerChange:EventEmitter<Customer> =new EventEmitter<Customer>();
   @Output() cancelChange:EventEmitter<boolean> =new EventEmitter<boolean>();
+  @Output() addChange:EventEmitter<Customer> =new EventEmitter<Customer>();
 
-
-  
   constructor() { }
 
   ngOnInit(): void {
@@ -24,5 +23,8 @@ export class CustomerDetailComponent implements OnInit {
   }
   cancel(){
     this.cancelChange.emit(true)
+  }
+  add(){
+    this.addChange.emit((this.customer))
   }
 }
