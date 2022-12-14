@@ -1,14 +1,16 @@
-{{register2Form.value | json}}
+<!-- {{register2Form.value | json}} -->
 <div form name="register2Form" [formGroup]="register2Form" class="row my-5">
     <div class="d-flex justify-content-between ">
         <div class="form-check  ">
-            <input  formControlName ="accountType" [value]="true" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault1" >
-            <label class="form-check-label"  for="flexRadioDefault1">
+            <input formControlName="accountType" [value]="true" class="form-check-input" type="radio" name="accountType"
+                id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
                 Je suis un particulier
             </label>
         </div>
         <div class="form-check d-flex">
-            <input  [value]="false" formControlName ="accountType" class="form-check-input" type="radio" name="accountType" id="flexRadioDefault2">
+            <input [value]="false" formControlName="accountType" class="form-check-input" type="radio"
+                name="accountType" id="flexRadioDefault2">
             <label class="form-check-label" for="flexRadioDefault2">
                 Je suis un professionnel
             </label>
@@ -17,15 +19,17 @@
     <div class="offset-md-3 col-md-6 my-5">
         <form class="my-0" *ngIf="register2Form" [formGroup]="register2Form" (ngSubmit)="onRegister2()">
             <!-- <h1 class="text-primary text-center my-3">Sign up</h1> -->
-                        <app-titre [titre]="'sign up'"></app-titre>
-            <div class="mb-3">
+            <app-titre [titre]="'sign up'"></app-titre>
+
+            <div *ngIf="register2Form.get('accountType')?.value " class="mb-3">
+
                 <label for="name" class="form-label">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Type the product name here"
                     formControlName="name">
                 <div class="d-block invalid-feedback"
                     *ngIf="submitted && register2Form.get('name')?.hasError('required')">Name is required.</div>
             </div>
-            <div class="mb-3">
+            <div *ngIf="register2Form.get('accountType')?.value" class="mb-3">
                 <label for="name" class="form-label">prenom:</label>
                 <input type="text" class="form-control" id="name" name="prenom"
                     placeholder="Type the product prenom here" formControlName="prenom">
@@ -47,7 +51,7 @@
                 <div class="d-block invalid-feedback"
                     *ngIf="submitted && register2Form.get('adresse')?.hasError('required')">adresse is required.</div>
             </div>
-            
+
             <div class="mb-3">
                 <label for="name" class="form-label">email:</label>
                 <input type="email" class="form-control" id="name" name="email" placeholder="Type the email  here"
@@ -66,7 +70,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">confirmationpassword:</label>
                 <input type="password" class="form-control" id="name" name="confirmationpassword"
-                    placeholder="Type the password  here" formControlName="confirmationpassword">
+                    placeholder="Type the password here" formControlName="confirmationpassword">
                 <div class="d-block invalid-feedback"
                     *ngIf="submitted && register2Form.get('confirmationpassword')?.hasError('required')">
                     confirmationpassword is required.</div>
@@ -79,20 +83,44 @@
                     *ngIf="submitted && register2Form.get('adresse')?.hasError('required')">adresse is required.</div>
             </div>
 
-            <div class="mb-3" *ngIf="register2Form.get('commentaire')">
+            <div class="mb-3">
                 <label for="name" class="form-label"> commentaire:</label>
                 <input type="text" class="form-control" id="name" name="commentaire"
-                    placeholder="Type the   commentaire  here" formControlName="commentaire">
+                    placeholder="Type the commentaire here" formControlName="commentaire">
                 <div class="d-block invalid-feedback"
                     *ngIf="submitted && register2Form.get('commentaire')?.hasError('required')"> commentaire is
                     required.</div>
             </div>
-            <div class="mb-3" *ngIf="register2Form.get('raison social')">
-                <label for="name" class="form-label"> raison social:</label>
-                <input type="text" class="form-control" id="name" name="raison sociale"
-                    placeholder="Type the   raison sociale  here" formControlName="raison social">
+            <div class="mb-3" *ngIf="!register2Form.get('accountType')?.value">
+                <label for="raisonSocial" class="form-label"> Raison social:</label>
+                <input type="text" class="form-control" id="raisonSocial" name="raisonSocial"
+                    placeholder="Type the raison sociale  here" formControlName="raisonSocial">
                 <div class="d-block invalid-feedback"
-                    *ngIf="submitted && register2Form.get('raison social')?.hasError('required')"> raison social is
+                    *ngIf="submitted && register2Form.get('raisonSocial')?.hasError('required')"> Raison social is
+                    required.</div>
+            </div>
+            <div class="mb-3" *ngIf="!register2Form.get('accountType')?.value">
+                <label for="statut" class="form-label"> Statut:</label>
+                <input type="text" class="form-control" id="statut" name="statut" placeholder="Type the statut here"
+                    formControlName="statut">
+                <div class="d-block invalid-feedback"
+                    *ngIf="submitted && register2Form.get('statut')?.hasError('required')"> Statut is
+                    required.</div>
+            </div>
+            <div class="mb-3" *ngIf="!register2Form.get('accountType')?.value">
+                <label for="siret" class="form-label"> Siret</label>
+                <input type="text" class="form-control" id="siret" name="siret"
+                    placeholder="Type the siret here" formControlName="siret">
+                <div class="d-block invalid-feedback"
+                    *ngIf="submitted && register2Form.get('siret')?.hasError('required')"> Siret is
+                    required.</div>
+            </div>
+            <div class="mb-3" *ngIf="!register2Form.get('accountType')?.value">
+                <label for="gerant" class="form-label"> Gerant:</label>
+                <input type="text" class="form-control" id="gerant" name="gerant"
+                    placeholder="Type the Gerant here" formControlName="gerant">
+                <div class="d-block invalid-feedback"
+                    *ngIf="submitted && register2Form.get('Gerant')?.hasError('required')"> Gerant is
                     required.</div>
             </div>
 

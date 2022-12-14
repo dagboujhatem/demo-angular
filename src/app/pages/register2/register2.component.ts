@@ -29,10 +29,10 @@ export class Register2Component implements OnInit {
     // listen on valueChange of account type
     this.register2Form?.get('accountType')?.valueChanges.subscribe((value) => {
       if (value === true) {
-        this.register2Form?.removeControl('raison social');
+        this.register2Form?.removeControl('raisonSocial');
         this.register2Form?.removeControl('siret');
         this.register2Form?.removeControl('statut');
-        this.register2Form?.removeControl('Gerant');
+        this.register2Form?.removeControl('gerant');
         this.register2Form?.addControl(
           'nom',
           new FormControl('', [Validators.required])
@@ -43,7 +43,7 @@ export class Register2Component implements OnInit {
         );
       } else {
         this.register2Form?.addControl(
-          'raison social',
+          'raisonSocial',
           new FormControl('', [Validators.required])
         );
         this.register2Form?.addControl(
@@ -55,7 +55,7 @@ export class Register2Component implements OnInit {
           new FormControl('', [Validators.required])
         );
         this.register2Form?.addControl(
-          'Gerant',
+          'gerant',
           new FormControl('', [Validators.required])
         );
         this.register2Form?.removeControl('nom');
