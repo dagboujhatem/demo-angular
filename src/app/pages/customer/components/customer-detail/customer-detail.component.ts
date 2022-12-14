@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Customer } from '../../models/customer';
 
 @Component({
   selector: 'app-customer-detail',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerDetailComponent implements OnInit {
 
+  @Input() customer:Customer = new Customer();
+  @Output() customerChange:EventEmitter<Customer> =new EventEmitter<Customer>();
+  @Output() cancelChange:EventEmitter<boolean> =new EventEmitter<boolean>();
+
+
+  
   constructor() { }
 
   ngOnInit(): void {
   }
+  update(){
+    this.customerChange.emit((this.customer))
 
+  }
+  cancel(){
+    this.cancelChange.emit(true)
+  }
 }
