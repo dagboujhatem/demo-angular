@@ -1,10 +1,10 @@
-<p *ngIf="customer.customerNo">Customer No : {{customer.customerNo}}</p>
-<p>Name : <input [(ngModel)]="customer.name"></p>
-<p>Address : <input [(ngModel)]="customer.address"></p>
-<p>city : <input [(ngModel)]="customer.city"></p>
-<p>state : <input [(ngModel)]="customer.state"></p>
-<p>country : <input [(ngModel)]="customer.country"></p>
+<p *ngIf="curentCustomer?.customerNo">Customer No : {{curentCustomer?.customerNo}}</p>
+<p>Name : <input [(ngModel)]="name"></p>
+<p>Address : <input [(ngModel)]="address"></p>
+<p>city : <input [(ngModel)]="city"></p>
+<p>state : <input [(ngModel)]="state"></p>
+<p>country : <input [(ngModel)]="country"></p>
 
-<button *ngIf="!customer.customerNo  " (click)="add()">Add</button>
-<button *ngIf="customer.customerNo" (click)="update()">Update</button>
+<button *ngIf="!curentCustomer?.customerNo" (click)="add()">Add</button>
+<button *ngIf="curentCustomer?.customerNo" (click)="update()">Update</button>
 <button (click)="cancel()">cancel</button>

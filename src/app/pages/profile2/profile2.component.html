@@ -27,7 +27,7 @@
     </div>
     <div class="form-group">
       <label for="">Confirm Password</label>
-      <input [class.is-invalid]="registrationForm?.errors?.['mismatch']" type="password"
+      <input [class.is-invalid]="registrationForm.errors?.['mismatch']" type="password"
         formControlName="confirmPassword" class="form-control">
       <small *ngIf="registrationForm?.errors?.['mismatch']" class="text-danger">Password does not match</small>
     </div>
@@ -62,6 +62,6 @@
       </div>
     </div>
 
-    <button [disabled]="!registrationForm?.valid" class="btn btn-primary mb-5" type="submit">Register</button>
+    <button [disabled]="!registrationForm.valid" class="btn btn-primary mb-5" type="submit">Register</button>
   </form>
 </div>

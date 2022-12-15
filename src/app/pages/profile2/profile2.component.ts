@@ -8,9 +8,9 @@ import { FormBuilder, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./profile2.component.scss'],
 })
 export class Profile2Component implements OnInit {
-  registrationForm?: FormGroup ;
+  registrationForm?: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,25 +29,24 @@ export class Profile2Component implements OnInit {
 
   get userName() {
     console.log();
-    
+
     return this.registrationForm?.get('userName');
   }
   get email() {
     return this.registrationForm?.get('email');
   }
-  get skills() : FormArray {
+  get skills(): FormArray {
     return this.registrationForm?.get('skills') as FormArray;
   }
   addSkill() {
     this.skills.push(this.fb.control('', [Validators.required]));
   }
 
-  deletAllSkills(){
+  deletAllSkills() {
     this.skills.clear();
   }
 
-  deleteSkill(i: number){
+  deleteSkill(i: number) {
     this.skills.removeAt(i);
   }
-
 }
