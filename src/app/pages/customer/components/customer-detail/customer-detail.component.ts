@@ -4,27 +4,25 @@ import { Customer } from '../../models/customer';
 @Component({
   selector: 'app-customer-detail',
   templateUrl: './customer-detail.component.html',
-  styleUrls: ['./customer-detail.component.scss']
+  styleUrls: ['./customer-detail.component.scss'],
 })
 export class CustomerDetailComponent implements OnInit {
+  @Input() customer: Customer = new Customer();
+  @Output() customerChange: EventEmitter<Customer> =
+    new EventEmitter<Customer>();
+  @Output() cancelChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() addChange: EventEmitter<Customer> = new EventEmitter<Customer>();
 
-  @Input() customer:Customer = new Customer();
-  @Output() customerChange:EventEmitter<Customer> =new EventEmitter<Customer>();
-  @Output() cancelChange:EventEmitter<boolean> =new EventEmitter<boolean>();
-  @Output() addChange:EventEmitter<Customer> =new EventEmitter<Customer>();
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  update() {
+    this.customerChange.emit(this.customer);
   }
-  update(){
-    this.customerChange.emit((this.customer))
-
+  cancel() {
+    this.cancelChange.emit(true);
   }
-  cancel(){
-    this.cancelChange.emit(true)
-  }
-  add(){
-    this.addChange.emit((this.customer))
+  add() {
+    this.addChange.emit(this.customer);
   }
 }
