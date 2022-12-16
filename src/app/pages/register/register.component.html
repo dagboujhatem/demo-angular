@@ -1,23 +1,55 @@
 <div class="row my-5">
   <div class="offset-md-3 col-md-6 my-5">
-    <form class="my-0" (ngSubmit)="onRegister()">
-     <app-titre [titre]="'register'"></app-titre>
+    <form class="my-0" (ngSubmit)="onRegister(f)" #f="ngForm">
+      <app-titre [titre]="'register'"></app-titre>
       <div class="mb-3">
         <label for="fullname" class="form-label">Full name:</label>
-        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Type your full name here" [(ngModel)]="fullName">
+        <input type="text" class="form-control" id="fullname" name="fullName" placeholder="Type your full name here"
+          [(ngModel)]="fullName" #fullNameControl="ngModel"
+          [ngClass]="{ 'is-invalid': isSubmitted && fullNameControl.invalid , 'is-valid': isSubmitted && fullNameControl.valid}"
+          required>
+        <div class="d-block invalid-feedback" *ngIf="isSubmitted && fullNameControl.hasError('required')">
+          fullName is required
+        </div>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">E-mail address</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Type your e-mail address here" [(ngModel)]="email">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Type your e-mail address here"
+          [(ngModel)]="email" #emailControl="ngModel" required email
+          [ngClass]="{ 'is-invalid': isSubmitted && emailControl.invalid , 'is-valid': isSubmitted && emailControl.valid}">
+        <div class="d-block invalid-feedback" *ngIf="isSubmitted && emailControl.hasError('required')">
+          email is required
+        </div>
+        <div class="d-block invalid-feedback" *ngIf="isSubmitted && emailControl.hasError('email')">
+          email must be a valid email adresse 
+        </div>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Type your password here" [(ngModel)]="password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Type your password here"
+          [(ngModel)]="password" #passwordControl="ngModel" required minlength="8"
+          [ngClass]="{ 'is-invalid': isSubmitted && passwordControl.invalid , 'is-valid': isSubmitted && passwordControl.valid}">
+          <div class="d-block invalid-feedback" *ngIf="isSubmitted && passwordControl.hasError('required')">
+            password is required
+          </div>
+          <div class="d-block invalid-feedback" *ngIf="isSubmitted && passwordControl.hasError('minlength')">
+            password must be longer than 8 characters
+          </div>
       </div>
       <div class="mb-3">
         <label for="passwordConfirmation" class="form-label">Confirm password</label>
-        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirm your password here" [(ngModel)]="confirmPassword">
+        <input type="password" class="form-control" id="passwordConfirmation" name="confirmPassword"
+          placeholder="Confirm your password here" [(ngModel)]="confirmPassword" #confirmPasswordControl="ngModel" required minlength="8"
+          [ngClass]="{ 'is-invalid': isSubmitted && confirmPasswordControl.invalid , 'is-valid': isSubmitted && confirmPasswordControl.valid}">
+          <div class="d-block invalid-feedback" *ngIf="isSubmitted && confirmPasswordControl.hasError('required')">
+            confirm password is required
+          </div>
+          <div class="d-block invalid-feedback" *ngIf="isSubmitted && confirmPasswordControl.hasError('minlength')">
+            confirm password must be longer than 8 characters
+          </div>
       </div>
+
+
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="check">
         <label class="form-check-label" for="check">
@@ -30,4 +62,3 @@
     </form>
   </div>
 </div>
-
