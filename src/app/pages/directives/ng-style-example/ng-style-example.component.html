@@ -1,0 +1,17 @@
+<p [ngStyle]="monStyle">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex saepe mollitia vitae quos asperiores eaque? Provident
+    id quia dolores aperiam ducimus officiis ab deleniti adipisci recusandae? Commodi ipsum laboriosam rerum.
+</p>
+
+<!-- alternative syntax -->
+<button [style.color]="getConnecsionColor()">
+    connexion
+</button>
+
+<button [style.color]="connecsionColor">
+    connexion color
+</button>
+
+<button [style.color]="connecsionColorr" (click)="changeColor()">
+    connexion color
+</button>

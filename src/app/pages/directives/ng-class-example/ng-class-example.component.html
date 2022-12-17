@@ -1,0 +1,23 @@
+<button [ngClass]="dangerButton">
+    danger
+</button>
+
+<br>
+
+<button [ngClass]="successButton">
+    success
+</button>
+
+<br>
+<button class="btn" [ngClass]="isInStock? 'btn-success':'btn-warning'">
+    ajouter au panier
+</button>
+
+<!-- alternative syntax ngClass -->
+<button class="btn" [ngClass]="{'btn-success:':isInStock}">
+    ajouter au panier2
+</button>
+
+<button class="btn" [class.btn-success]="isInStock">
+    ajouter au panier2
+</button>
