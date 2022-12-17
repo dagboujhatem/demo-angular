@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'posts', loadChildren: () => import('./domains/posts/posts.module').then(m => m.PostsModule) },
   { path: 'customer', loadChildren: () => import('./pages/customer/customer.module').then(m => m.CustomerModule) },
   { path: 'directives', loadChildren: () => import('./pages/directives/directives.module').then(m => m.DirectivesModule) },
+  { path: 'view-child', loadChildren: () => import('./pages/view-child/view-child.module').then(m => m.ViewChildModule) },
   { path: '**', redirectTo: 'page-400', pathMatch: 'full' }
 ];
 
