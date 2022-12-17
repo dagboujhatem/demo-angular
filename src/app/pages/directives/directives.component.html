@@ -1,0 +1,90 @@
+<h1 class="text-center text-primery my-5">
+    les directives structurelles : *ngIf & *ngFor & *ngSwich : sugar syntax
+</h1>
+
+<h4>
+    *ngIf = ""
+</h4>
+
+<button *ngIf="hide" class="btn btn-primary"> connect</button>
+
+<!-- long Form *ngIf -->
+
+
+<ng-template [ngIf]="hide">
+    <button class="btn btn-primary"> connect</button>
+</ng-template>
+
+<!-- *ngIf with else -->
+
+<ng-container *ngIf="isAuthentificated; then isLogged else isLoggeout"></ng-container>
+
+<ng-template #isLogged>
+    <p> you are logged</p>
+</ng-template>
+
+<ng-template #isLoggeout>
+    <p> you are logout</p>
+</ng-template>
+
+<!-- *ngFor +  trackBy-->
+
+<ul>
+    <li *ngFor="let item of tab ; let i = index ; let l=last ; trackBy : truckedByFn" (click)="changeName(i)">
+        {{i + " " + item?.name}}
+        {{l}}
+
+    </li>
+</ul>
+
+<!-- long Form *ngFor-->
+
+<ng-template ngFor let-item [ngForOf]="tab" let-i="index" let-l="last">
+    <li>
+        {{i + " " + item?.name}}
+        {{l}}
+    </li>
+</ng-template>
+
+<!-- *ngSwich -->
+
+<ul class="my-5">
+    <li *ngFor="let p of peoples" [ngSwitch]="p.country">
+
+        <p *ngSwitchCase="'UK'" class="text-primary"> {{p.name}} </p>
+        <p *ngSwitchCase="'USA'" class="text-success"> {{p.name}} </p>
+        <p *ngSwitchCase="'HK'" class="text-danger"> {{p.name}} </p>
+        <p *ngSwitchDefault class="text-warning"> {{p.name}} </p>
+
+    </li>
+</ul>
+
+<!-- *ngSwich long form-->
+
+<div class='card'>
+    <div class='card-header'>
+        Multiple ngSwitchCase with same condition
+    </div>
+    <div class="card-body">
+        <select [(ngModel)]="selectedValue1">
+            <option *ngFor="let item of items;" [value]="item.name">{{item.name}}</option>
+        </select>
+        <div [ngSwitch]="selectedValue1">
+            <ng-template [ngSwitchCase]="'One'">One is Selected</ng-template>
+            <ng-template [ngSwitchCase]="'Two'">Two is Selected</ng-template>
+            <ng-template [ngSwitchCase]="'Three'">Three is Selected</ng-template>
+            <ng-template [ngSwitchCase]="'Four'">Four is Selected</ng-template>
+            <ng-template [ngSwitchCase]="'Five'">Five is Selected</ng-template>
+            <ng-template ngSwitchDefault>This is Default Option</ng-template>
+        </div>
+    </div>
+    <!-- end long form -->
+</div>
+
+
+
+
+
+<h1 class="text-center text-primery my-5">
+    les directives d´attributs : ngClass & ngStyle
+</h1>
