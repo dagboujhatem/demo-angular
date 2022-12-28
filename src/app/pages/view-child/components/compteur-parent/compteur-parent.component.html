@@ -1,1 +1,10 @@
-<p>compteur-parent works!</p>
+<h1 class="text-center text-primery my-5"> parent</h1>
+
+<p >
+    la valeur de compteur est : {{child?.count}}
+</p>
+
+<button (click)="onChangeplus()">incrementer</button>
+<button (click)="onChangemoins()">decrementer</button>
+<h1 class="text-center text-primery my-5"> child</h1>
+<app-compteur-child></app-compteur-child>
