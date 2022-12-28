@@ -29,4 +29,5 @@ export class CustomDirectiveComponent implements OnInit {
   toggle(i: number) {
     this.jokes[i].hide = !this.jokes[i].hide;
   }
+  
 }
