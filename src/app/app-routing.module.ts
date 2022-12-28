@@ -27,18 +27,61 @@ const routes: Routes = [
   { path: 'term-and-condition', component: TermsConditionsComponent },
   { path: 'page-400', component: Page400Component },
   { path: 'page-500', component: Page500Component },
-  { path: 'users', loadChildren: () => import('./domains/users/users.module').then(m => m.UsersModule) },
-  { path: 'products', loadChildren: () => import('./domains/products/products.module').then(m => m.ProductsModule) },
-  { path: 'commandes', loadChildren: () => import('./domains/commandes/commandes.module').then(m => m.CommandesModule) },
-  { path: 'posts', loadChildren: () => import('./domains/posts/posts.module').then(m => m.PostsModule) },
-  { path: 'customer', loadChildren: () => import('./pages/customer/customer.module').then(m => m.CustomerModule) },
-  { path: 'directives', loadChildren: () => import('./pages/directives/directives.module').then(m => m.DirectivesModule) },
-  { path: 'view-child', loadChildren: () => import('./pages/view-child/view-child.module').then(m => m.ViewChildModule) },
-  { path: '**', redirectTo: 'page-400', pathMatch: 'full' }
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./domains/users/users.module').then((m) => m.UsersModule),
+  },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('./domains/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
+  },
+  {
+    path: 'commandes',
+    loadChildren: () =>
+      import('./domains/commandes/commandes.module').then(
+        (m) => m.CommandesModule
+      ),
+  },
+  {
+    path: 'posts',
+    loadChildren: () =>
+      import('./domains/posts/posts.module').then((m) => m.PostsModule),
+  },
+  {
+    path: 'customer',
+    loadChildren: () =>
+      import('./pages/customer/customer.module').then((m) => m.CustomerModule),
+  },
+  {
+    path: 'directives',
+    loadChildren: () =>
+      import('./pages/directives/directives.module').then(
+        (m) => m.DirectivesModule
+      ),
+  },
+  {
+    path: 'view-child',
+    loadChildren: () =>
+      import('./pages/view-child/view-child.module').then(
+        (m) => m.ViewChildModule
+      ),
+  },
+  {
+    path: 'custom-directive',
+    loadChildren: () =>
+      import('./pages/custom-directive/custom-directive.module').then(
+        (m) => m.CustomDirectiveModule
+      ),
+  },
+  { path: '**', redirectTo: 'page-400', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,21 @@
+<div class="row my-5">
+    <div class="col-md-12">
+      <h1 class="text-center text-primary my-3">Joke exemple </h1>
+    </div>
+    <div *ngFor="let data of jokes; index as i" class="col-md-12 my-1" >
+      <div class="card card-block">
+        <h4 class="card-title">
+          {{ data.setup }}
+        </h4>
+          <ng-template [ngIf]="!data.hide">
+          <p class="card-text">
+          {{ data.punchline }}
+        </p>
+        </ng-template>
+        <button class="btn btn-primary"
+                (click)="toggle(i)">Tell Me
+        </button>
+      </div>
+    </div>
+  </div>
+  
